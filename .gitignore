@@ -1,0 +1,22 @@
+# Archivos a ignorar en Git
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Chrome
+*.crx
+*.pem
+
+# Archivos de desarrollo
+node_modules/
+.env
+.env.local
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp
+*.temp
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoCheck - Environmental Analysis</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>🌱 EcoCheck</h1>
+      <p class="subtitle">Environmental Product Analysis</p>
+    </header>
+
+    <!-- API Key Configuration (initially hidden) -->
+    <div id="apiKeySection" class="api-key-section hidden">
+      <h3>Configure Gemini API Key</h3>
+      <p class="help-text">
+        You need a Google Gemini API key to use this extension.
+        <a href="https://makersuite.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Get API Key</a>
+      </p>
+      <div class="input-group">
+        <input 
+          type="password" 
+          id="apiKeyInput" 
+          placeholder="Enter your Gemini API Key"
+          class="input-field"
+        >
+        <button id="saveApiKeyBtn" class="btn btn-primary">Save</button>
+      </div>
+      <p class="error-text" id="apiKeyError"></p>
+    </div>
+
+    <!-- State: Loading -->
+    <div id="loadingState" class="state hidden">
+      <div class="spinner"></div>
+      <p>Analyzing product...</p>
+    </div>
+
+    <!-- State: Error -->
+    <div id="errorState" class="state hidden">
+      <div class="error-icon">⚠️</div>
+      <p id="errorMessage"></p>
+      <button id="retryBtn" class="btn btn-secondary">Retry</button>
+    </div>
+
+    <!-- State: No analysis -->
+    <div id="noAnalysisState" class="state">
+      <div class="info-icon">ℹ️</div>
+      <p>Navigate to a product page and click "Analyze" to get started.</p>
+      <button id="analyzeBtn" class="btn btn-primary">Analyze Product</button>
+    </div>
+
+    <!-- State: Analysis result -->
+    <div id="resultState" class="state hidden">
+      <!-- Result badge -->
+      <div id="resultBadge" class="result-badge">
+        <span id="resultLabel" class="label-text"></span>
+        <span id="resultConfidence" class="confidence-text"></span>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-section">
+        <h3>Summary</h3>
+        <p id="resultSummary" class="summary-text"></p>
+      </div>
+
+      <!-- Button to show breakdown -->
+      <button id="showBreakdownBtn" class="btn btn-secondary">
+        <span id="breakdownBtnText">Show Breakdown</span>
+        <span class="arrow">▼</span>
+      </button>
+
+      <!-- Expandable breakdown -->
+      <div id="breakdownSection" class="breakdown-section hidden">
+        <h3>Detailed Breakdown</h3>
+        <div id="breakdownContent" class="breakdown-content">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+
+      <!-- Button to analyze again -->
+      <button id="analyzeAgainBtn" class="btn btn-primary">Analyze Again</button>
+    </div>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
+
